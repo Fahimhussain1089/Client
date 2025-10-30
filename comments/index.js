@@ -57,4 +57,3 @@ app.post('/events', (req, res) => {
 app.listen(4001, () => {
     console.log('\x1b[95m%s\x1b[0m', 'Comments service listening on 4001');
 });
-//thi is commoent= testing02

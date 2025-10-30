@@ -78,5 +78,3 @@ app.listen(4002,() =>{
     console.log(colors.info(`Listening on 4002`));
 
 });
-//check this is first commit for query =>index 
-//TesgingBranch=change01

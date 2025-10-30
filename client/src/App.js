@@ -16,4 +16,3 @@ const   App = () => {
 }
  
 export default App;
-//this is cliend of FrontEnd = Cliend
