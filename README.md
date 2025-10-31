@@ -82,3 +82,6 @@ And much more!
 
 This is the course I wish I had when I was learning microservices. A course that focuses on the hardest parts, gives clear explanations, and discusses the pros and cons of different design options. Sign up today and join me in mastering microservices!
 <img width="1434" height="900" alt="Screenshot 2025-10-31 at 12 19 47 AM" src="https://github.com/user-attachments/assets/2a5bb5a5-f7a1-443c-a77d-028de8d863fe" />
+
+<img width="1461" height="944" alt="Screenshot 2025-11-01 at 12 08 05 AM" src="https://github.com/user-attachments/assets/28e06608-07b7-49fd-a490-78777eeac0f4" />
+
