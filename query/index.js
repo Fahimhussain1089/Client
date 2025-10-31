@@ -2,6 +2,8 @@ const express = require('express');
 const colors = require('./utils/consolecolors');
 const bodyParser = require('body-parser');
 const cors = require('cors'); 
+const axios = require('axios');
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -40,10 +42,8 @@ app.get('/posts', (req,res)=> {
 
 });
 
-app.post('/events', (req, res) => {
-    const { type, data } = req.body;
-    
-    console.log(colors.pink(`\n🎯 Event Received: ${type}`));
+const handleEvent = (type,data) => {
+     console.log(colors.pink(`\n🎯 Event Received: ${type}`));
     console.log(colors.pink(`📦 Event Data:`, JSON.stringify(data, null, 2)));
     
     if (type === 'PostCreated') {
@@ -66,15 +66,49 @@ app.post('/events', (req, res) => {
         console.log(colors.yellow(`⚠️  Unknown event type: ${type}`));
     }
     
+    if(type === 'CommentUpdated'){
+        const {id,content,postId,status} = data;
+        const post = posts[postId];
+        const comment = post.comment.find(comment => {
+            return comment.id === id;
+        });
+        comment.status = status;
+        comment.content = content;
+    }
+}
+
+app.post('/events', (req, res) => {
+    const { type, data } = req.body;
+    
+   
+
     // Log the updated state after processing the event
     logAllPosts();
+
+    handleEvent(type,data);    
     
     res.send({ status: 'OK' });
 });
 
 
-app.listen(4002,() =>{
+app.listen( 4002 , async () =>{
 
     console.log(colors.info(`Listening on 4002`));
+
+     try {
+        const res = await axios.get('http://localhost:4005/events');
+        
+        // Check if res.data exists and is iterable
+        if (res.data && Array.isArray(res.data)) {
+            for(let event of res.data){
+                console.log(colors.seaGreen('Processing events: ', event.type));
+                handleEvent(event.type, event.data);
+            }
+        } else {
+            console.log(colors.yellow('⚠️ No events data received or data is not an array'));
+        }
+    } catch (error) {
+        console.log(colors.error(`❌ Error fetching events: ${error.message}`));
+    }
 
 });
