@@ -140,6 +140,13 @@ So, for any path that makes use of a regex, you would use ImplementationSpecific
 
 eg:
 
+## Ingress Setup
+
+Deploy the NGINX Ingress Controller:
+
+```yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.14.0/deploy/static/provider/cloud/deploy.yaml
+
           
 -apiVersion: networking.k8s.io/v1
 kind: Ingress
