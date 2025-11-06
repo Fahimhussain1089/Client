@@ -141,7 +141,7 @@ So, for any path that makes use of a regex, you would use ImplementationSpecific
 eg:
 
           
-apiVersion: networking.k8s.io/v1
+-apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-srv
