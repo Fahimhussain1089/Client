@@ -140,6 +140,28 @@ So, for any path that makes use of a regex, you would use ImplementationSpecific
 
 eg:
 
+          
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: posts.com
+      http:
+        paths:
+          - path: /posts
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-clusterip-srv
+                port:
+                  number: 4000
+
+                  
+          
           - path: /posts/?(.*)/comments
             pathType: ImplementationSpecific
 
