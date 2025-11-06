@@ -105,6 +105,7 @@ https://kubernetes.io/docs/concepts/services-networking/ingress/
 
 
 
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -122,7 +123,8 @@ spec:
                 name: posts-clusterip-srv
                 port:
                   number: 4000
-Cannot be used with pathType Prefix Warning
+
+                  
 
 
 A few lectures from now, you may eventually see a warning in your terminal:
