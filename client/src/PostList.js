@@ -9,16 +9,26 @@ import CommentList from './CommentList';
 const PostList = () => {
     const [posts,setPosts] = useState({});
 
-    const fetchPost = async() => {
-        const res = await axios.get('http://localhost:4002/posts');
-        console.log(colors.lime(`Client=>PostList=> :: ${res.data}`));
-        setPosts(res.data);
+    // const fetchPost = async() => {
+    //     // const res = await axios.get('http://localhost:4002/posts');
+    //     const res = await axios.get('http://posts.com/posts'); // REMOVE :4002
+    //     console.log(colors.lime(`Client=>PostList=> :: ${res.data}`));
+    //     setPosts(res.data);
 
 
-    };
+    // };
+
+  const fetchPosts = async () => {
+    const res = await axios.get("http://posts.com/posts");
+     console.log(colors.lime(`Client=>PostList=> :: ${res.data}`));
+
+    setPosts(res.data);
+  };
+
 
     useEffect(() => {
-        fetchPost();
+        // fetchPost();
+        fetchPosts();
 
 
     },[]);
